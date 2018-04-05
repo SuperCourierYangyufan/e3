@@ -17,16 +17,21 @@ https://github.com/SuperCourierYangyufan/e3-manager <br/>
 
 
 <H5>zookeepe使用r</H5>
-对zookeeper解压缩后 在conf文件夹中 对zoo_sample.cfg改名为zoo.cfg</br>并且在上级目录创建data文件夹改为以下结构：</BR>
-tickTime=2000</br>
-initLimit=10</br>
-syncLimit=5</br>
-dataDir=/usr/local/zookeeper-3.4.6/data</br>
-clientPort=2181</br>
-#maxClientCnxns=60</br>
-#autopurge.snapRetainCount=3</br>
-#autopurge.purgeInterval=1</br>
+第一步：安装jdk
+第二步：把zookeeper的压缩包上传到linux系统。
+第三步：解压缩压缩包
+tar -zxvf zookeeper-3.4.6.tar.gz
+第四步：进入zookeeper-3.4.6目录，创建data文件夹。
+第五步：把zoo_sample.cfg改名为zoo.cfg
+[root@localhost conf]# mv zoo_sample.cfg zoo.cfg
+第六步：修改data属性：dataDir=/root/zookeeper-3.4.6/data
+第七步：启动zookeeper
+[root@localhost bin]# ./zkServer.sh start
+关闭：[root@localhost bin]# ./zkServer.sh stop
+查看状态：[root@localhost bin]# ./zkServer.sh status
 
-
-在bin中  ./zkServer.sh start 启动</br>
-在bin中  ./zkServer.sh stop 关闭</br>
+注意：需要关闭防火墙。
+service iptables stop
+永久关闭修改配置开机不启动防火墙：
+chkconfig iptables off
+如果不能成功启动zookeeper，需要删除data目录下的zookeeper_server.pid文件。
