@@ -16,34 +16,14 @@ https://github.com/SuperCourierYangyufan/e3-manager <br/>
 
 
 
-
+<H5>zookeeper</H5>
 对zookeeper解压缩后 在conf文件夹中 对zoo_sample.cfg改名为zoo.cfg</br>并且在上级目录创建data文件夹改为以下结构：</BR>
-# The number of milliseconds of each tick</br>
 tickTime=2000</br>
-# The number of ticks that the initial</br>
-# synchronization phase can take</br>
 initLimit=10</br>
-# The number of ticks that can pass between</br>
-# sending a request and getting an acknowledgement</br>
 syncLimit=5</br>
-# the directory where the snapshot is stored.</br>
-# do not use /tmp for storage, /tmp here is just</br>
-# example sakes.</br>
 dataDir=/usr/local/zookeeper-3.4.6/data</br>
-# the port at which the clients will connect</br>
 clientPort=2181</br>
-# the maximum number of client connections.</br>
-# increase this if you need to handle more clients</br>
 #maxClientCnxns=60</br>
-#</br>
-# Be sure to read the maintenance section of the</br>
-# administrator guide before turning on autopurge.</br>
-#</br>
-# http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</br>
-#</br>
-# The number of snapshots to retain in dataDir</br>
 #autopurge.snapRetainCount=3</br>
-# Purge task interval in hours</br>
-# Set to "0" to disable auto purge feature</br>
 #autopurge.purgeInterval=1</br>
 
