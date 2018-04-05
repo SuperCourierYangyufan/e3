@@ -16,7 +16,7 @@ https://github.com/SuperCourierYangyufan/e3-manager <br/>
 
 
 
-<H5>zookeeper</H5>
+<H5>zookeepe使用r</H5>
 对zookeeper解压缩后 在conf文件夹中 对zoo_sample.cfg改名为zoo.cfg</br>并且在上级目录创建data文件夹改为以下结构：</BR>
 tickTime=2000</br>
 initLimit=10</br>
@@ -27,3 +27,6 @@ clientPort=2181</br>
 #autopurge.snapRetainCount=3</br>
 #autopurge.purgeInterval=1</br>
 
+
+在bin中  ./zkServer.sh start 启动</br>
+在bin中  ./zkServer.sh stop 关闭</br>
