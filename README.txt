@@ -1,13 +1,12 @@
-# 笔记
-<H3>这是我的笔记本仓库，其中有我的学习资料</H3>
+# 笔记这是我的笔记本仓库，其中有我的学习资料
 
-电商项目实战 <br/>
-e3-parent (e3商城项目的所有父类) <br/>
-https://github.com/SuperCourierYangyufan/e3-parent <br/>
-e3-common （工具类） <br/>
-https://github.com/SuperCourierYangyufan/e3-common <br/>
-e3-manager （实现） <br/>
-https://github.com/SuperCourierYangyufan/e3-manager <br/>
+电商项目实战 
+e3-parent (e3商城项目的所有父类) 
+https://github.com/SuperCourierYangyufan/e3-parent 
+e3-common （工具类） 
+https://github.com/SuperCourierYangyufan/e3-common 
+e3-manager （实现） 
+https://github.com/SuperCourierYangyufan/e3-manager 
 
 
 
@@ -151,3 +150,47 @@ pageinfo中有多个属性：
     ps:eazyUI中 对初始显示需要严格定义{total:”2”,rows:[{“id”:”1”,”name”:”张三”},{“id”:”2”,”name”:”李四”}]}   total  rows
     
     
+    
+   #Nginx的安装
+   一：linux安装Nginx需要环境，如下安装
+   yum install gcc-c++
+   yum install -y pcre pcre-devel
+   yum install -y zlib zlib-devel
+   yum install -y openssl openssl-devel
+   
+   二 ：把nginx的源码包上传到linux系统
+   	tar zxf nginx-1.8.0.tar.gz （解压）
+   三：进入解压文件夹中
+	./configure \
+	--prefix=/usr/local/nginx \
+	--pid-path=/var/run/nginx/nginx.pid \
+	--lock-path=/var/lock/nginx.lock \
+	--error-log-path=/var/log/nginx/error.log \
+	--http-log-path=/var/log/nginx/access.log \
+	--with-http_gzip_static_module \
+	--http-client-body-temp-path=/var/temp/nginx/client \
+	--http-proxy-temp-path=/var/temp/nginx/proxy \
+	--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+	--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+	--http-scgi-temp-path=/var/temp/nginx/scgi
+    四：注意：启动nginx之前，上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录
+	 mkdir /var/temp/nginx/client -p
+    五：在解压文件夹中
+    	make
+	make install
+	
+	#Nginux的使用
+	进入sbin目录
+	[root@localhost sbin]# ./nginx  //启动
+	关闭nginx：
+	[root@localhost sbin]# ./nginx -s stop
+	推荐使用：
+	[root@localhost sbin]# ./nginx -s quit
+
+	重启nginx：
+	1、先关闭后启动。
+	2、刷新配置文件：
+	[root@localhost sbin]# ./nginx -s reload
+
+
+
