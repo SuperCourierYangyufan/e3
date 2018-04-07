@@ -215,7 +215,7 @@ pageinfo中有多个属性：
 		    index  index.html index.htm; //访问页面
 		}
 	    }
-   
-    
+   	
+    。。。。。。。。可配多个 upstream 名字{} +server{}
 
 
