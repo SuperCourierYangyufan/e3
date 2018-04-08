@@ -3,146 +3,15 @@
 电商项目实战 
 
 
-#zookeeper使用
-第一步：安装jdk<br/>
-第二步：把zookeeper的压缩包上传到linux系统。<br/>
-第三步：解压缩压缩包<br/>
-tar -zxvf zookeeper-3.4.6.tar.gz<br/>
-第四步：进入zookeeper-3.4.6目录，创建data文件夹。<br/>
-第五步：把zoo_sample.cfg改名为zoo.cfg<br/>
-[root@localhost conf]# mv zoo_sample.cfg zoo.cfg<br/>
-第六步：修改data属性：dataDir=/root/zookeeper-3.4.6/data<br/>
-第七步：启动zookeeper<br/>
-[root@localhost bin]# ./zkServer.sh start<br/>
-关闭：[root@localhost bin]# ./zkServer.sh stop<br/>
-查看状态：[root@localhost bin]# ./zkServer.sh status<br/>
-<br/>
-注意：需要关闭防火墙。<br/>
-service iptables stop<br/>
-永久关闭修改配置开机不启动防火墙：<br/>
-chkconfig iptables off<br/>
-如果不能成功启动zookeeper，需要删除data目录下的zookeeper_server.pid文件。<br/>
+#zookeeper的安装使用:https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/zookeeper
 
-#dubbo与zookeeper整合
-导入以下包(提供方与消费方均要)
-  <!-- dubbo相关 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.jboss.netty</groupId>
-                    <artifactId>netty</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-        </dependency>
-        
-提供方spring代码如下(service)：
-<!-- 使用dubbo发布服务 -->
-	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<dubbo:application name="e3-manager" /> //特别注意  这里应该与web.xml中的name名字一致（大坑）
-	<dubbo:registry protocol="zookeeper" address="192.168.220.131:2181" />
-	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<dubbo:protocol name="dubbo" port="20880" />
-	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="cn.e3.service.ItemService" ref="itemServiceImpl"  timeout="600000" />
-  
- 消费方spring(controller):
-  <!-- 引用dubbo服务 -->
-    <dubbo:application name="e3-manager-web"/>
-    <dubbo:registry protocol="zookeeper" address="192.168.220.131:2181"/>
-    <dubbo:reference interface="cn.e3.service.ItemService" id="itemService" />
-    
-    
-    
 #pageHelper使用 ：https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/pageHelper%E4%BD%BF%E7%94%A8
-
-    
     
+#Nginx的安装与使用 ：https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/Nginx
     
-   #Nginx的安装
-   一：linux安装Nginx需要环境，如下安装
-   yum install gcc-c++
-   yum install -y pcre pcre-devel
-   yum install -y zlib zlib-devel
-   yum install -y openssl openssl-devel
-   
-   二 ：把nginx的源码包上传到linux系统
-   	tar zxf nginx-1.8.0.tar.gz （解压）
-   三：进入解压文件夹中
-	./configure \
-	--prefix=/usr/local/nginx \
-	--pid-path=/var/run/nginx/nginx.pid \
-	--lock-path=/var/lock/nginx.lock \
-	--error-log-path=/var/log/nginx/error.log \
-	--http-log-path=/var/log/nginx/access.log \
-	--with-http_gzip_static_module \
-	--http-client-body-temp-path=/var/temp/nginx/client \
-	--http-proxy-temp-path=/var/temp/nginx/proxy \
-	--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
-	--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
-	--http-scgi-temp-path=/var/temp/nginx/scgi
-    四：注意：启动nginx之前，上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录
-	 mkdir /var/temp/nginx/client -p
-    五：在解压文件夹中
-    	make
-	make install
-	
-	#Nginux的使用
-	进入sbin目录
-	[root@localhost sbin]# ./nginx  //启动
-	关闭nginx：
-	[root@localhost sbin]# ./nginx -s stop
-	推荐使用：
-	[root@localhost sbin]# ./nginx -s quit
-
-	重启nginx：
-	1、先关闭后启动。
-	2、刷新配置文件：
-	[root@localhost sbin]# ./nginx -s reload
-
-
-
-
-	#Nginx使用：在conf中配置Nginx.conf文件，以下内容，实现反向代理
-	
-	//配置服务器集群 A1 A2 实现同样功能 ，weigh越大 访问比重越大
-	upstream tomcat1 { //在location的访问名
-	server 192.168.25.148:8080;   //代理服务器A1，
-	server 192.168.25.148:8082 weight=2; //代理服务器A2
-   	 }
-	  server {
-		listen       80;  //外界访问的端口号
-		server_name  www.sina.com.cn; //外界访问的域名
-
-		#charset koi8-r;
-
-		#access_log  logs/host.access.log  main;
-
-		location / {
-		    proxy_pass   http://tomcat1; //在配置服务器集群的访问路径 、
-		    index  index.html index.htm; //访问页面
-		}
-	    }
-   	
-    。。。。。。。。可配多个 upstream 名字{} +server{}
-    
-    
-    #使用FastDFS图片服务器 ，详细搭建请自行百度
-    https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager-web/src/main/test/FastDfsTest.java
-    ps：若使用fun2方法，需要使用e3-common下utils包内的FastDFSClient的工具类
+#使用FastDFS图片服务器 ，详细搭建请自行百度
+ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager-web/src/main/test/FastDfsTest.java
+ ps：若使用fun2方法，需要使用e3-common下utils包内的FastDFSClient的工具类
  	
 
 
