@@ -1,18 +1,6 @@
 # 笔记这是我的笔记本仓库，其中有我的学习资料
 
 电商项目实战 
-e3-parent (e3商城项目的所有父类) 
-https://github.com/SuperCourierYangyufan/e3-parent 
-e3-common （工具类） 
-https://github.com/SuperCourierYangyufan/e3-common 
-e3-manager （实现） 
-https://github.com/SuperCourierYangyufan/e3-manager 
-
-
-
-
-
-
 
 
 #zookeeper使用
