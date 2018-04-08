@@ -1,0 +1,71 @@
+ #Nginx的安装
+   一：linux安装Nginx需要环境，如下安装
+   yum install gcc-c++
+   yum install -y pcre pcre-devel
+   yum install -y zlib zlib-devel
+   yum install -y openssl openssl-devel
+   
+   二 ：把nginx的源码包上传到linux系统
+   	tar zxf nginx-1.8.0.tar.gz （解压）
+   三：进入解压文件夹中
+	./configure \
+	--prefix=/usr/local/nginx \
+	--pid-path=/var/run/nginx/nginx.pid \
+	--lock-path=/var/lock/nginx.lock \
+	--error-log-path=/var/log/nginx/error.log \
+	--http-log-path=/var/log/nginx/access.log \
+	--with-http_gzip_static_module \
+	--http-client-body-temp-path=/var/temp/nginx/client \
+	--http-proxy-temp-path=/var/temp/nginx/proxy \
+	--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+	--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+	--http-scgi-temp-path=/var/temp/nginx/scgi
+    四：注意：启动nginx之前，上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录
+	 mkdir /var/temp/nginx/client -p
+    五：在解压文件夹中
+    	make
+	make install
+	
+	#Nginux的使用
+	进入sbin目录
+	[root@localhost sbin]# ./nginx  //启动
+	关闭nginx：
+	[root@localhost sbin]# ./nginx -s stop
+	推荐使用：
+	[root@localhost sbin]# ./nginx -s quit
+
+	重启nginx：
+	1、先关闭后启动。
+	2、刷新配置文件：
+	[root@localhost sbin]# ./nginx -s reload
+
+
+
+
+	#Nginx使用：在conf中配置Nginx.conf文件，以下内容，实现反向代理
+	
+	//配置服务器集群 A1 A2 实现同样功能 ，weigh越大 访问比重越大
+	upstream tomcat1 { //在location的访问名
+	server 192.168.25.148:8080;   //代理服务器A1，
+	server 192.168.25.148:8082 weight=2; //代理服务器A2
+   	 }
+	  server {
+		listen       80;  //外界访问的端口号
+		server_name  www.sina.com.cn; //外界访问的域名
+
+		#charset koi8-r;
+
+		#access_log  logs/host.access.log  main;
+
+		location / {
+		    proxy_pass   http://tomcat1; //在配置服务器集群的访问路径 、
+		    index  index.html index.htm; //访问页面
+		}
+	    }
+   	
+    。。。。。。。。可配多个 upstream 名字{} +server{}
+    
+    
+    #使用FastDFS图片服务器 ，详细搭建请自行百度
+    https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager-web/src/main/test/FastDfsTest.java
+    ps：若使用fun2方法，需要使用e3-common下utils包内的FastDFSClient的工具类
