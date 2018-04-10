@@ -1,9 +1,8 @@
 
-wget http://download.redis.io/releases/redis-2.8.3.tar.gz
+wget http://download.redis.io/releases/redis-3.0.0.tar.gz
 
 1）安装redis编译的c环境，yum install gcc-c++
-2）将redis-2.6.16.tar.gz上传到Linux系统中
-3）解压到/usr/local下  tar -xvf redis-2.8.3.tar.gz -C /usr/local
+3）解压到/usr/local下  tar -xvf redis-3.0.0.tar.gz -C /usr/local
 4）进入redis-2.6.16目录 使用make命令编译redis
 5）在redis-2.6.16目录中 使用make PREFIX=/usr/local/redis install命令安装
 6）拷贝redis-2.6.16中的redis.conf到安装目录redis的bin中,将redis.conf文件中的daemonize从no修改成yes表示后台启动
