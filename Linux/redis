@@ -29,3 +29,4 @@ wget http://download.redis.io/releases/redis-3.0.0.tar.gz
     ./redis-trib.rb create --replicas 1 123.206.32.230:7001 123.206.32.230:7002 123.206.32.230:7003 123.206.32.230:7004 111.230.204.184:7005 111.230.204.184:7006
     -》创建集群时报某个err slot 0 is already busy (redis::commanderror)
        这是由于之间创建集群没有成功,需要将nodes.conf和dir里面的文件全部删除(注意不要删除了redis.conf)
+    -》一台机器执行一次就OJBK
