@@ -24,6 +24,8 @@ wget http://download.redis.io/releases/redis-3.0.0.tar.gz
 3. mv /usr/local/redis-3.0.0/src/redis-trib.rb /usr/local/redis-copy/
    将脚本文件复制出来
 4.将redis-3.0.0.gem文件上传至linux（github放在linux目录下）
-5.yum install rubygems     装上第三放库
-
+5.gem install redis-3.0.0.gem    装上第三放库
+6.在脚本目录下 
+    ./redis-trib.rb create --replicas 1 123.206.32.230:7001 123.206.32.230:7002 123.206.32.230:7003 123.206.32.230:7004 111.230.204.184:7005 111.230.204.184:7006
+    -》若其中出现失误 ./redis-trib.rb fix 123.206.32.230:6379  两边清理卡槽
 
