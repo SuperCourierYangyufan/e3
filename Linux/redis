@@ -2,12 +2,28 @@
 wget http://download.redis.io/releases/redis-3.0.0.tar.gz
 
 1）安装redis编译的c环境，yum install gcc-c++
-3）解压到/usr/local下  tar -xvf redis-3.0.0.tar.gz -C /usr/local
-4）进入redis-2.6.16目录 使用make命令编译redis
-5）在redis-2.6.16目录中 使用make PREFIX=/usr/local/redis install命令安装
-6）拷贝redis-2.6.16中的redis.conf到安装目录redis的bin中,将redis.conf文件中的daemonize从no修改成yes表示后台启动
+2）解压到/usr/local下  tar -xvf redis-3.0.0.tar.gz -C /usr/local
+3）进入redis-3.0.0目录 使用make命令编译redis
+4）在redis-3.0.0目录中 使用make PREFIX=/usr/local/redis install命令安装
+5）拷贝redis-3.0.0中的redis.conf到安装目录redis的bin中
+6）将redis.conf文件中的daemonize从no修改成yes表示后台启动
 7）启动redis 在bin下执行命令redis-server redis.conf
 8）如需远程连接redis，需配置redis端口6379在linux防火墙中开发
 /sbin/iptables -I INPUT -p tcp --dport 6379 -j ACCEPT
 /etc/rc.d/init.d/iptables save
+
+
+
+集群的搭建 
+1.需要将redis.conf文件中cluster-enabled yes 改为非注释 
+    =》若是在同一台机器上部署多个redis则需要修改端口号，在redis.conf通过 修改port属性 且不能修改主redis的端口号
+    =》若需要复制redis 则需要 将开启redis的缓冲文件删除
+2.yum install ruby
+  yum install rubygems
+  安装ruby脚本环境
+3. mv /usr/local/redis-3.0.0/src/redis-trib.rb /usr/local/redis-copy/
+   将脚本文件复制出来
+4.将redis-3.0.0.gem文件上传至linux（github放在linux目录下）
+5.yum install rubygems     装上第三放库
+
 
