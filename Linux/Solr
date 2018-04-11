@@ -73,9 +73,6 @@
                  <field column="price" name="item_price"/> 
                  <field column="image" name="item_image"/> 
             </entity>   
-             <entity name="tb_content_category" query="SELECT name FROM tb_content_category ">
-                  <field column="name" name="item_category_name"/> 
-            </entity>   
         </document>   
 
         </dataConfig>
