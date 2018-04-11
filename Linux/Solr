@@ -41,6 +41,49 @@
     下面一组是一个索引优化 当查询item_keywords 会 查询下面三个
  
 17.重启tomcat
+--------------------------------------------------------------------------------------------------------------------------------------------
+导入数据资料
+    1. cd /usr/local/solr-4.10.3/dist/
+    2. mkdir /usr/local/solrhome/collection1/lib 创建包文件夹
+    3.cp solr-dataimporthandler-4.10.3.jar solr-dataimporthandler-extras-4.10.3.jar /usr/local/solrhome/collection1/lib/  复制包
+    4.上传mysql驱动 至 /usr/local/solrhome/collection1/lib/
+    5  cd /usr/local/solrhome/collection1/conf/
+    6 vi solrconfig.xml
+        =>
+        <requestHandler name="/dataimport" 
+            class="org.apache.solr.handler.dataimport.DataImportHandler">
+                <lst name="defaults">
+                  <str name="config">data-config.xml</str>
+                 </lst>
+          </requestHandler> 
+    7 vi data-config.xml
+      例：
+      <?xml version="1.0" encoding="UTF-8" ?>  
+        <dataConfig>   
+        <dataSource type="JdbcDataSource"   
+                  driver="com.mysql.jdbc.Driver"   
+                  url="jdbc:mysql://localhost:169.254.33.214/e3mall"   
+                  user="root"   
+                  password="admin"/>   
+        <document>   
+            <entity name="tb_item" query="SELECT id,title,sell_point,price,image FROM tb_item ">
+                  <field column="id" name="id"/> 
+                 <field column="title" name="item_title"/> 
+                 <field column="sell_point" name="item_sell_point"/> 
+                 <field column="price" name="item_price"/> 
+                 <field column="image" name="item_image"/> 
+            </entity>   
+             <entity name="tb_content_category" query="SELECT name FROM tb_content_category ">
+                  <field column="name" name="item_category_name"/> 
+            </entity>   
+        </document>   
+
+        </dataConfig>
+
+
+
+
+   
 
 
 
