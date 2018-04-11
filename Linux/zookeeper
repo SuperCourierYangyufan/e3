@@ -1,22 +1,22 @@
 #zookeeper使用
-第一步：安装jdk<br/>
-第二步：把zookeeper的压缩包上传到linux系统。<br/>
-第三步：解压缩压缩包<br/>
-tar -zxvf zookeeper-3.4.6.tar.gz<br/>
-第四步：进入zookeeper-3.4.6目录，创建data文件夹。<br/>
-第五步：把zoo_sample.cfg改名为zoo.cfg<br/>
-[root@localhost conf]# mv zoo_sample.cfg zoo.cfg<br/>
-第六步：修改data属性：dataDir=/root/zookeeper-3.4.6/data<br/>
-第七步：启动zookeeper<br/>
-[root@localhost bin]# ./zkServer.sh start<br/>
-关闭：[root@localhost bin]# ./zkServer.sh stop<br/>
-查看状态：[root@localhost bin]# ./zkServer.sh status<br/>
+第一步：安装jdk
+第二步：把zookeeper的压缩包上传到linux系统。
+第三步：解压缩压缩包
+tar -zxvf zookeeper-3.4.6.tar.gz
+第四步：进入zookeeper-3.4.6目录，创建data文件夹。
+第五步：把zoo_sample.cfg改名为zoo.cfg
+[root@localhost conf]# mv zoo_sample.cfg zoo.cfg
+第六步：修改data属性：dataDir=/root/zookeeper-3.4.6/data
+第七步：启动zookeeper
+[root@localhost bin]# ./zkServer.sh start
+关闭：[root@localhost bin]# ./zkServer.sh stop
+查看状态：[root@localhost bin]# ./zkServer.sh status
 <br/>
-注意：需要关闭防火墙。<br/>
-service iptables stop<br/>
-永久关闭修改配置开机不启动防火墙：<br/>
-chkconfig iptables off<br/>
-如果不能成功启动zookeeper，需要删除data目录下的zookeeper_server.pid文件。<br/>
+注意：需要关闭防火墙。
+service iptables stop
+永久关闭修改配置开机不启动防火墙：
+chkconfig iptables off
+如果不能成功启动zookeeper，需要删除data目录下的zookeeper_server.pid文件。
 
 #dubbo与zookeeper整合
 导入以下包(提供方与消费方均要)
@@ -59,3 +59,7 @@ chkconfig iptables off<br/>
     <dubbo:application name="e3-manager-web"/>
     <dubbo:registry protocol="zookeeper" address="192.168.220.131:2181"/>
     <dubbo:reference interface="cn.e3.service.ItemService" id="itemService" />
+    
+    
+    将dubbo-admin（官方提供）项目放到tomcat下运行，可监控dubbo
+    	 =》不推荐使用jdk7以上版本环境安装   8会报错
