@@ -72,8 +72,11 @@
                  <field column="sell_point" name="item_sell_point"/> 
                  <field column="price" name="item_price"/> 
                  <field column="image" name="item_image"/> 
-            </entity>   
-        </document>   
+                     <entity name="tb_item_cat" query="select name from tb_item_cat where cid='${tb_item.id}'">
+                         <field name="name" column="item_category_name" />
+                    </entity>
+            </entity>
+            </document>   
 
         </dataConfig>
 
