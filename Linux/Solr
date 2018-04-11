@@ -73,7 +73,7 @@
              <field column="price" name="item_price"/> 
               <field column="image" name="item_image"/> 
                <entity name="tb_item_cat" query="select name from tb_item_cat where id='${tb_item.cid}'">
-                <field name="name" column="item_category_name" />
+                <field  column="name" name="item_category_name" />
             </entity>
         </entity>  
             </document>   
