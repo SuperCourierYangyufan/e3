@@ -1,6 +1,4 @@
-   
-    # 笔记这是我的笔记本仓库，其中有我的学习资料
-
+#学习笔记
 电商项目实战 
 
 
@@ -16,3 +14,5 @@
 
 #redis安装
 https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/redis
+#redis使用
+https://github.com/SuperCourierYangyufan/e3/blob/master/e3-content/redis.txt
