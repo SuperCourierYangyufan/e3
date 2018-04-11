@@ -30,3 +30,5 @@ wget http://download.redis.io/releases/redis-3.0.0.tar.gz
     -》创建集群时报某个err slot 0 is already busy (redis::commanderror)
        这是由于之间创建集群没有成功,需要将nodes.conf和dir里面的文件全部删除(注意不要删除了redis.conf)
     -》一台机器执行一次就OJBK
+7.若使用集群，任意节点
+    ./redis-cli -p 端口号 -c
