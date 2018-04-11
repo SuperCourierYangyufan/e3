@@ -14,6 +14,33 @@
     修改如上，且注意要去除注释
 8.启动tomcat
 9.查看日志： tail -f logs/catalina.out
+10.上传中文分词器 IK Analyzer 2012FF_hf1文件夹到linux中
+11.进入文件夹   cp IKAnalyzer2012FF_u1.jar /usr/local/apache-tomcat-7.0.57/webapps/solr/WEB-INF/lib/ 添加包
+12 创建classes文件夹  mkdir /usr/local/apache-tomcat-7.0.57/webapps/solr/WEB-INF/classes
+13.复制文件分词器所需文件 cp ext_stopword.dic IKAnalyzer.cfg.xml mydict.dic /usr/local/apache-tomcat-7.0.57/webapps/solr/WEB-INF/classes
+14. cd /usr/local/solrhome/collection1/conf/   进入1号空间配置分词器
+15.vi schema.xml  配置文件 
+    =》在最后 加入
+        <fieldType name="text_ik" class="solr.TextField">
+            <analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"/>
+        </fieldType>
+16.同样是vi schema.xml 配置域
+    例：
+    <field name="item_title" type="text_ik" indexed="true" stored="true"/> 
+    <field name="item_sell_point" type="text_ik" indexed="true" stored="true"/>
+    <field name="item_price"  type="long" indexed="true" stored="true"/>
+    <field name="item_image" type="string" indexed="false" stored="true" />
+    <field name="item_category_name" type="string" indexed="true" stored="true" />
+    
+    <field name="item_keywords" type="text_ik" indexed="true" stored="false" multiValued="true"/>
+    <copyField source="item_title" dest="item_keywords"/>
+    <copyField source="item_sell_point" dest="item_keywords"/>
+    <copyField source="item_category_name" dest="item_keywords"/>
+
+    name="名字" type="使用的分词器"  indexed="是否被索引"  stored="是否存储" multiValued="是否存储多个值"
+    下面一组是一个索引优化 当查询item_keywords 会 查询下面三个
+ 
+17.重启tomcat
 
 
 
