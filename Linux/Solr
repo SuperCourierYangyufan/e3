@@ -1,0 +1,19 @@
+#Solr的安装
+1.将solr-4.10.3.tgz.tgz上传至linux
+2.解压缩至 /usr/local/ 下
+3.将解压文件夹中dist文件夹下的 solr-4.10.3.war  放入tomcat中 并改名为solr.war
+4.启动tomcat 再关闭 tomcat 解压出 slor文件夹
+5.cp /usr/local/solr-4.10.3/example/lib/ext/* /usr/local/apache-tomcat-7.0.57/webapps/solr/WEB-INF/lib/   将必要的配置包导入文件夹中
+6. cp -r /usr/local/solr-4.10.3/example/solr /usr/local/solrhome 配置出solrhome
+7.vi /usr/local/apache-tomcat-7.0.57/webapps/solr/WEB-INF/web.xml 修改配置（solrhome的位置）
+    =》 <env-entry>
+        ....
+        <env-enrty-value> /usr/local/solrhome </env-enrty-value> 
+        ....
+        </env-entry>
+    修改如上，且注意要去除注释
+8.启动tomcat
+
+
+
+
