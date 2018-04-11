@@ -66,7 +66,7 @@
                   user="root"   
                   password="admin"/>   
         <document>   
-           <entity name="tb_item" query="SELECT id,title,sell_point,price,image FROM tb_item ">
+           <entity name="tb_item" query="SELECT id,title,sell_point,price,image,cid FROM tb_item ">
              <field column="id" name="id"/> 
              <field column="title" name="item_title"/> 
              <field column="sell_point" name="item_sell_point"/> 
@@ -81,6 +81,7 @@
 
 
     column="数据库中名字" name="solr创建存储对象"  ${表.关联id}  ps:第一个id是自带的
+                                                       =》这个关联的id在主查询依旧要查出来
 
    
 
