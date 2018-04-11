@@ -14,5 +14,6 @@
 
 #redis安装
 https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/redis
+
 #redis使用
 https://github.com/SuperCourierYangyufan/e3/blob/master/e3-content/redis.txt
