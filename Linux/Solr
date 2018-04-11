@@ -13,7 +13,7 @@
         </env-entry>
     修改如上，且注意要去除注释
 8.启动tomcat
-
+9.查看日志： tail -f logs/catalina.out
 
 
 
