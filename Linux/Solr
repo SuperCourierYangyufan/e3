@@ -62,7 +62,7 @@
         <dataConfig>   
         <dataSource type="JdbcDataSource"   
                   driver="com.mysql.jdbc.Driver"   
-                  url="jdbc:mysql://localhost:169.254.33.214/e3mall"   
+                  url="jdbc:mysql://169.254.33.214:3306/e3mall"   
                   user="root"   
                   password="admin"/>   
         <document>   
