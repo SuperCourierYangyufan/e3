@@ -66,22 +66,21 @@
                   user="root"   
                   password="admin"/>   
         <document>   
-            <entity name="tb_item" query="SELECT id,title,sell_point,price,image FROM tb_item ">
-                  <field column="id" name="id"/> 
-                 <field column="title" name="item_title"/> 
-                 <field column="sell_point" name="item_sell_point"/> 
-                 <field column="price" name="item_price"/> 
-                 <field column="image" name="item_image"/> 
-                     <entity name="tb_item_cat" query="select name from tb_item_cat where cid='${tb_item.id}'">
-                         <field name="name" column="item_category_name" />
-                    </entity>
+           <entity name="tb_item" query="SELECT id,title,sell_point,price,image FROM tb_item ">
+             <field column="id" name="id"/> 
+             <field column="title" name="item_title"/> 
+             <field column="sell_point" name="item_sell_point"/> 
+             <field column="price" name="item_price"/> 
+              <field column="image" name="item_image"/> 
+               <entity name="tb_item_cat" query="select name from tb_item_cat where id='${tb_item.cid}'">
+                <field name="name" column="item_category_name" />
             </entity>
+        </entity>  
             </document>   
-
         </dataConfig>
 
 
-
+    column="数据库中名字" name="solr创建存储对象"  ${表.关联id}  ps:第一个id是自带的
 
    
 
