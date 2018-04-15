@@ -9,7 +9,7 @@
 #Nginx的安装与使用 ：https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/Nginx
     
 #使用FastDFS图片服务器 ，详细搭建请自行百度
-https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager-web/FastDFS_USE
+https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager-web/FastDFS_USE.md
 
 #redis安装
 https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/redis
@@ -21,4 +21,4 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-content/redis.md
 https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/Solr
 
 #solr使用
-https://github.com/SuperCourierYangyufan/e3/blob/master/e3-search/solr_USE
+https://github.com/SuperCourierYangyufan/e3/blob/master/e3-search/solr_USE.md
