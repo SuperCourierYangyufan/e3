@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+
+	<!-- 配置Service扫描 -->
+	<context:component-scan base-package="cn.e3.search.service" />
+	<!--初始化httpSolrServer-->
+	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg index="0" value="http://123.206.32.230:8080/solr/"/>
+	</bean>
+
+	<!-- 使用dubbo发布服务 -->
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="e3-search" />
+	<dubbo:registry protocol="zookeeper" address="111.230.204.184:2181" />
+	<!-- 用dubbo协议在20881端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="20882" />
+	<!-- 声明需要暴露的服务接口 -->
+	<!--<dubbo:service interface="cn.e3.content.service.ContentService" ref="contentServiceImpl" timeout="600000" />-->
+	<dubbo:service interface="cn.e3.search.service.SearchItemService" ref="searchItemServiceImpl" timeout="600000"/>
+	<!-- 配置aop
+    // 配置目标对象
+    <bean name="userService" class="Day02.UserService"></bean>
+    //配置通知对象
+    <bean name="myAdvice" class="Day02.MyAdvice"></bean>
+    //配置将通知织入目标对象
+    <aop:config>
+        //配置切入点
+            execution(void Day02.UserService.save())
+            execution(* Day02.*Service.*(..))
+        <aop:pointcut expression="execution(* Day02.*Service.*(..))" id="pc"/>
+        <aop:aspect ref="myAdvice">
+            // 指定 before方法作为前置通知切入到pc/
+            <aop:before method="before" pointcut-ref="pc"/>
+            <aop:after-returning method="afterRunig" pointcut-ref="pc"/>
+            <aop:around method="around" pointcut-ref="pc"/>
+        </aop:aspect>
+    </aop:config>
+
+    //注解方式
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+    //XML
+    <bean name="userService" class="Day02.UserService"></bean>
+    <bean name="myAdvice" class="Day02.MyAdvice"></bean>
+    <aop:config>
+        <aop:pointcut expression="execution(* Day02.*Service.*(..))" id="pc"/>
+        <aop:aspect ref="myAdvice">
+            <aop:around method="around" pointcut-ref="pc"/>
+        </aop:aspect>
+    </aop:config>
+    -->
+	
+	
+</beans>
