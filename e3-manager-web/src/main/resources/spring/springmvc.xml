@@ -25,7 +25,9 @@
     <dubbo:registry protocol="zookeeper" address="111.230.204.184:2181"/>
     <dubbo:reference interface="cn.e3.service.ItemService" id="itemService" />
 	<dubbo:reference interface="cn.e3.service.ItemCatService" id="itemCatService" />
-
+	<dubbo:reference interface="cn.e3.content.service.ContentCategoryService" id="contentCategoryService" />
+	<dubbo:reference interface="cn.e3.content.service.ContentService" id="contentService"/>
+	<dubbo:reference interface="cn.e3.search.service.SearchItemService" id="searchItemService"/>
 
     <!--加载图片服务器得地址文件-->
     <context:property-placeholder location="classpath:conf/resource.properties"/>
