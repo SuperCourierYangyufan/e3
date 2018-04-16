@@ -11,10 +11,25 @@ tar -zxvf zookeeper-3.4.6.tar.gz
 [root@localhost bin]# ./zkServer.sh start
 关闭：[root@localhost bin]# ./zkServer.sh stop
 查看状态：[root@localhost bin]# ./zkServer.sh status
-<br/>
 注意：需要关闭防火墙。
 service iptables stop
 永久关闭修改配置开机不启动防火墙：
 chkconfig iptables off
 如果不能成功启动zookeeper，需要删除data目录下的zookeeper_server.pid文件。
+
+
+
+
+#zookeeper集群
+1.三份起步
+2.在data文件夹下  新建一个myid文件，并写入（1/2/3....）的数字  touch myid
+3.在zoo.cfg中设置 clientPort=2183（端口号）
+4.在zoo.cfg最下面添加 
+      server.1= 172.21.0.6:2881:3881
+      server.2= 172.21.0.6:2882:3882
+      server.3= 172.21.0.6:2883:3883
+              =》ps:如果是本机的zookeeper填写的是内网ip地址
+5.依次启动，并且查看 主从节点
+
+
 
