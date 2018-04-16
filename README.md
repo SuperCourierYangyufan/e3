@@ -2,7 +2,9 @@
 电商项目实战 
 
 
-#zookeeper的安装使用:https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/zookeeper
+#zookeeper的安装:https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/zookeeper
+
+#zookeeper    https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/zookeeper_USE
 
 #pageHelper使用 ：https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/pageHelper%E4%BD%BF%E7%94%A8
     
