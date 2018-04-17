@@ -27,3 +27,6 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-search/solr_USE.md
 
 #ActiveMQ安装与使用
 https://github.com/SuperCourierYangyufan/e3/blob/master/Linux/ActiveMQ.md
+
+#全局异常与打印日志
+https://github.com/SuperCourierYangyufan/e3/blob/master/e3-search-web/log4j.md
