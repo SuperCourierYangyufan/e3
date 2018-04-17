@@ -87,7 +87,7 @@
 
 
 
-#solr机器
+#solr集群
 1.搭建zookeeper集群
 2.复制四份tomcat 修改server.xml  修改port后的端口（每个三个）  改为 8105/8205......  8180 8109 
 3.将单机版的solr项目 复制至tomcat的webapp下
@@ -103,6 +103,8 @@
 11.启动tomcat
 12.浏览器中：分片 http://123.206.32.230:8480/solr/admin/collections?action=CREATE&name=collection2&numShards=2&replicationFactor=2
              删除 http://123.206.32.230:8480/solr/admin/collections?action=DELETE&name=collection1
+                =》使用前 请假solr-4.10.3/dis/solr-dataimporthandler-4.10.3.jar 放置solr工程的lib下
+                    
 
 
 
