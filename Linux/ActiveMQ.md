@@ -9,11 +9,11 @@
 #使用<br>
 
 先请引入：<br>
-        <!--MQ-->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-        </dependency>
+        <!--MQ--><br>
+        <dependency><br>
+            <groupId>org.apache.activemq</groupId><br>
+            <artifactId>activemq-all</artifactId><br>
+        </dependency><br>
 
 
 
