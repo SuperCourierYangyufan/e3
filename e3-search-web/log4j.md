@@ -4,7 +4,9 @@
 
 2.log4j的包为 org.slf4j.Logger
 
-3.springmvc中注入
+3.记住导入:https://github.com/SuperCourierYangyufan/e3/tree/master/e3-search-web/src/main/resources 下的log4j.properties文件
 
-4.全局异常有且仅有一个有用
+4.springmvc中注入
+
+5.全局异常有且仅有一个有用
 
