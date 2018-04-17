@@ -8,13 +8,7 @@
 
 #使用<br>
 
-先请引入：<br>
-        <!--MQ--><br>
-        <dependency><br>
-            <groupId>org.apache.activemq</groupId><br>
-            <artifactId>activemq-all</artifactId><br>
-        </dependency><br>
-
+先请引入：activemq-all(5.11.2版本 其他与spring冲突)
 
 
 单机版：<br>
