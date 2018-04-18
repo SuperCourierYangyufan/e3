@@ -7,12 +7,13 @@
  
 
 #使用
-先请引入：<!--MQ-->
-         <dependency>
-            <groupId>org.apache.activemq</groupId>
+先请引入：
+        <!--MQ-->
+        <dependency>
+            <groupId>>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
-            <version>5.11.2</version>
-         </dependency>
+             <version>>5.11.2</version>
+        </dependency>
 
 
 单机版：<br>
@@ -31,11 +32,11 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-se
             <version>4.2.4.RELEASE</version>
         </dependency>
         
-        <!--jedis-->
+        <!--MQ-->
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-             <version>2.7.2</version>
+            <groupId>>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+             <version>>5.11.2</version>
         </dependency>
 
 
