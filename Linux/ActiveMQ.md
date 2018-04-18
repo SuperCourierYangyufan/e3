@@ -6,7 +6,7 @@
  http:/111.230.204.184:8161/admin 账号密码：admin<br>
  
 
-#使用<br>
+#使用
 先请引入：<!--MQ--><br>
          <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -18,9 +18,9 @@
 单机版：<br>
 https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-service/src/main/test/ActiveMQTest/MqTest.java
 
-#与spring整合<br>
-首先引入spring整合包：<br>
-          <dependency>
+#与spring整合
+首先引入spring整合包：
+          <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
             <version>4.2.4.RELEASE</version>
