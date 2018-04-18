@@ -13,3 +13,5 @@
 
 单机版：<br>
 https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-service/src/main/test/ActiveMQTest/MqTest.java
+
+#与spring整合
