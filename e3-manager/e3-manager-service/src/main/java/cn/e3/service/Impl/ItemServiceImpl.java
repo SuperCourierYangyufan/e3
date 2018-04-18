@@ -1,5 +1,6 @@
 package cn.e3.service.Impl;
 
+
 import cn.e3.common.pojo.EasyUIData;
 import cn.e3.common.utils.E3Result;
 import cn.e3.common.utils.IDUtils;
@@ -12,8 +13,15 @@ import cn.e3.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +35,12 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private TbItemDescMapper tbItemDescMapper;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    @Resource(name="topicDestination")
+    private Destination topicDestination;
 
     @Override
     public TbItem getItemById(long itemid) {
@@ -56,7 +70,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public E3Result addItem(TbItem tbItem, String desc) {
         //创建商品id
-        long itemId = IDUtils.genItemId();
+        final long itemId = IDUtils.genItemId();
         //补全item属性
         tbItem.setId(itemId); //id
         tbItem.setStatus((byte) 1);//1 成功 2下架 3 删除
@@ -73,6 +87,13 @@ public class ItemServiceImpl implements ItemService {
         tbItemDesc.setUpdated(new Date());
         //向商品描述表插入数据
         tbItemDescMapper.insert(tbItemDesc);
+        //发送添加商品消息
+        jmsTemplate.send(topicDestination, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                return session.createTextMessage(itemId+"");
+            }
+        });
         //返回成功
         return E3Result.ok();
     }
