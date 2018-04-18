@@ -21,7 +21,15 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-se
 
 #与spring整合
 首先引入spring整合包：
-          <dependency>
+          
+        
+        <!--MQ-->
+        <dependency>
+            <groupId>>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+             <version>>5.11.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
             <version>4.2.4.RELEASE</version>
@@ -30,13 +38,6 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-se
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>4.2.4.RELEASE</version>
-        </dependency>
-        
-        <!--MQ-->
-        <dependency>
-            <groupId>>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-             <version>>5.11.2</version>
         </dependency>
 
 
