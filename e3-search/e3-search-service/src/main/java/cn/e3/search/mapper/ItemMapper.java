@@ -8,4 +8,7 @@ import java.util.List;
 public interface ItemMapper {
 
 	List<SearchItem> getItemList();
+
+	//activemq
+	SearchItem getItemById(long item);
 }
