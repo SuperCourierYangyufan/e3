@@ -7,7 +7,7 @@
  
 
 #使用
-先请引入：<!--MQ--><br>
+先请引入：<!--MQ-->
          <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
