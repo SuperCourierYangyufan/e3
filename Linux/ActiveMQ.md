@@ -30,5 +30,12 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-se
             <artifactId>spring-context-support</artifactId>
             <version>4.2.4.RELEASE</version>
         </dependency>
+        
+        <!--jedis-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+             <version>2.7.2</version>
+        </dependency>
 
 
