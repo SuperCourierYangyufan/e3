@@ -12,7 +12,7 @@ https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-se
 
 #与spring整合<br>
          ==》生产者：<br>
-                     =》发送消息  https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-service/src/main/java/cn/e3/service/Impl/ItemServiceImpl.java<br>
+                     =》发送消息  https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-service/src/main/java/cn/e3/service/Impl/ItemServiceImpl.java   （最下面）<br>
                      =》spring文件 https://github.com/SuperCourierYangyufan/e3/blob/master/e3-manager/e3-manager-service/src/main/resources/spring/applicationContext-activemq.xml<br>
          ==>消费者：<br>
                     =》监听器  https://github.com/SuperCourierYangyufan/e3/blob/master/e3-search/e3-search-service/src/main/java/cn/e3/search/Listener/ActiveMqListenerAdd.java<br>
