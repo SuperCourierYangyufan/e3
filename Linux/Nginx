@@ -66,6 +66,23 @@
     。。。。。。。。可配多个 upstream 名字{} +server{}
     
     
+    
+    #nginx----------与freemarker本机测试
+     server {
+        listen       81;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   D:/eclipse/FileText;
+            index  index.html index.htm;
+        }
+    }
+    
+    
   
     
     
