@@ -7,6 +7,11 @@
             <artifactId>freemarker</artifactId>
              <version>2.3.23</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>
 
 
 
