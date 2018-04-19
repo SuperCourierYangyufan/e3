@@ -31,3 +31,12 @@
 
 8.引入模板<#include "模板名称">
 
+
+#与spring整合文件：https://github.com/SuperCourierYangyufan/e3/blob/master/e3-item-web/src/main/resources/spring/springmvc.xml
+
+#详细代码：https://github.com/SuperCourierYangyufan/e3/blob/master/e3-item-web/src/main/java/cn/e3/item/Listener/HtmlGenLisener.java
+
+#ftl文件：
+
+后续思路：将生成的文件统一放置，将css.js.image文件放入生成的html的文件目录上级。在将nginx开启，设置默认路径为该目录下。在代码流程下，controller模块中  return "redirect:123.206.32.230/item/123456789.html";
+
