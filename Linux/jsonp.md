@@ -1,5 +1,5 @@
 #登入注册问题（session,json等跨域问题）
-<pre>
+<p>
 session跨域解决办法：
     1.将session自生成，放入redis中
     2.key为uuid，而value为用户信息
@@ -32,4 +32,4 @@ json跨域解决 =》jsonp
     
     
     
-     <pre/>
+     <p/>
