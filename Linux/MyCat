@@ -1,0 +1,54 @@
+#数据库分片
+1.解压mycat
+2.配置schema.xml(/usr/local/mycat/conf)
+      
+      <?xml version="1.0"?>
+       <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+       <mycat:schema xmlns:mycat="http://org.opencloudb/">
+
+        <schema name="test-mycat" checkSQLschema="false" sqlMaxLimit="100">
+                <!-- auto sharding by id (long) -->
+                <table name="tb_item" dataNode="dn1,dn2,dn3" rule="auto-sharding-long" />
+        </schema>
+        <dataNode name="dn1" dataHost="localhost1" database="mycat01" />
+        <dataNode name="dn2" dataHost="localhost2" database="mycat02" />
+        <dataNode name="dn3" dataHost="localhost1" database="mycat03" />
+        <dataHost name="localhost1" maxCon="1000" minCon="10" balance="0"
+                writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+                <heartbeat>select user()</heartbeat>
+                <writeHost host="hostM1" url="123.206.32.230:3306" user="root"
+                        password="admin">
+                </writeHost>
+        </dataHost>
+
+         <dataHost name="localhost2" maxCon="1000" minCon="10" balance="0"
+                writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+                <heartbeat>select user()</heartbeat>
+                <writeHost host="hostM1" url="111.230.204.184:3306" user="root"
+                        password="admin">
+                </writeHost>
+        </dataHost>
+      </mycat:schema>
+
+       
+      =>在<table>标签中 name=表中需要分片的表名 dataNode=分片的节点 rele=分片规则
+          <dataNode> name="分片节点代号" dataHost=下面配置dataHost的name  database="分片的数据库名字"
+          <dataHost> name="host名字"  <wirteHost>配置数据库 地址 账号密码 （只要一台主机有多个数据库，可以配置多个）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LAST.启动mycat bin下的    ./mycat console     or     ./mycat start               8066
