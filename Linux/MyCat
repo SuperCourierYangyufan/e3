@@ -1,5 +1,5 @@
 #数据库分片
-1.解压mycat
+1.解压mycat     8066
 2.配置schema.xml(/usr/local/mycat/conf)
       
       <?xml version="1.0"?>
@@ -35,6 +35,16 @@
           <dataNode> name="分片节点代号" dataHost=下面配置dataHost的name  database="分片的数据库名字"
           <dataHost> name="host名字"  <wirteHost>配置数据库 地址 账号密码 （只要一台主机有多个数据库，可以配置多个）
 
+3.修改Server.xml
+      <user name="user">
+       <property name="password">user</property>
+      <property name="schemas">test-mycat</property>
+      <property name="readOnly">false</property>
+      </user>
+      
+      下面两段只留下最下面一段 改为如上
+      第一二行 为连接mycat的账号密码 第三行为schema.xml中定义的库名 第四行改为不是只读
+      
 
 
 
@@ -51,4 +61,4 @@
 
 
 
-LAST.启动mycat bin下的    ./mycat console     or     ./mycat start               8066
+LAST.启动mycat bin下的    ./mycat console     or     ./mycat start             
