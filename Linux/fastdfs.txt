@@ -71,11 +71,12 @@ cp http.conf mime.types /etc/fdfs/
 ln -s /fastdfs/storage/data/ /fastdfs/storage/data/M00
 vim /usr/local/nginx/conf/nginx.conf
   将server的端口 80 改为 8888
-  
    location ~/group([0-9])/M00 {
            #alias /fastdfs/storge/data;
            ngx_fastdfs_module;
         }
+  
+  启动nginx
 
 
 
