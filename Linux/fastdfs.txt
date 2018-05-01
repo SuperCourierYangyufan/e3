@@ -1,0 +1,88 @@
+ yum install make cmake gcc gcc-c++
+
+
+
+解压并进入libfastcommon   /usr/local/fast
+ ./make.sh
+ ./make.sh install
+
+mkdir /usr/local/lib
+ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so
+ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
+ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
+ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
+
+解压并进入FastDFS_v5.05    /usr/local/fast
+ ./make.sh
+ ./make.sh install
+ 
+vim /etc/init.d/fdfs_storaged
+       %s+/usr/local/bin+/usr/bin
+vim /etc/init.d/fdfs_trackerd
+       %s+/usr/local/bin+/usr/bin
+      
+
+A(跟踪器)
+cd /etc/fdfs
+cp tracker.conf.sample tracker.conf
+vim  tracker.conf
+      base_path=fastdfs/tracker
+mkdir -p /fastdfs/tracker
+可以关闭防火墙（22122）
+
+启动/etc/init.d/fdfs_trackerd start
+关闭 /etc/init.d/fdfs_trackerd stop
+
+B(存储器)
+cd /etc/fdfs
+cp storage.conf.sample storage.conf
+    base_path=/fastdfs/storage
+    store_path0=/fastdfs/storage
+    tracker_server=跟踪器IP:端口 123.206.32.230:22122
+    http.server_port=8888
+    
+ mkdir -p /fastdfs/storage
+ 可以关闭防火墙（23000）
+ 启动 /etc/init.d/fdfs_storaged start
+  关闭 /etc/init.d/fdfs_storaged stop
+
+ 
+B(nginx)
+ fastdfs-nginx-module解压进入其下src    /usr/local/fast
+vim config
+    CORE_INCS="$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/" 改为
+    CORE_INCS="$CORE_INCS /usr/include/fastdfs /usr/include/fastcommon/"
+
+删除原先的nginx
+进入到到nginx编译目录
+ ./configure --add-module=/usr/local/fast/fastdfs-nginx-module/src/
+ make  
+ make install
+ 
+ cp /usr/local/fast/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs
+ vim /etc/fdfs/mod_fastdfs.conf
+        connect_timeout=10
+        tracker_server=123.206.32.230:22122
+        url_have_group_name=true
+         store_path0=/fastdfs/storage
+
+cd /usr/local/fast/FastDFS/conf/
+cp http.conf mime.types /etc/fdfs/
+ln -s /fastdfs/storage/data/ /fastdfs/storage/data/M00
+vim /usr/local/nginx/conf/nginx.conf
+  将server的端口 80 改为 8888
+  
+   location ~/group([0-9])/M00 {
+           #alias /fastdfs/storge/data;
+           ngx_fastdfs_module;
+        }
+
+
+
+
+
+
+
+
+
+
