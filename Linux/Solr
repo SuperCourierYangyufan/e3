@@ -24,6 +24,10 @@
         <fieldType name="text_ik" class="solr.TextField">
             <analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"/>
         </fieldType>
+        <!--IKAnalyzer Field-->
+   <field name="title_ik" type="text_ik" indexed="true" stored="true" />
+   <field name="content_ik" type="text_ik" indexed="true" stored="false" multiValued="true"/>
+
 16.同样是vi schema.xml 配置域
     例：
     <field name="item_title" type="text_ik" indexed="true" stored="true"/> 
