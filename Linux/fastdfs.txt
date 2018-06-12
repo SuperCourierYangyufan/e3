@@ -2,6 +2,7 @@
 
 
 mkdir /usr/local/lib
+mkdir /usr/local/fast
 解压并进入libfastcommon   /usr/local/fast
  ./make.sh
  ./make.sh install
@@ -12,7 +13,7 @@ ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
 ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
 ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
 
-mkdir /usr/local/fast
+
 解压并进入FastDFS_v5.05    /usr/local/fast
  ./make.sh
  ./make.sh install
@@ -23,11 +24,11 @@ vim /etc/init.d/fdfs_trackerd
        %s+/usr/local/bin+/usr/bin
       
 
-B(跟踪器)
+B(跟踪器) data+log
 cd /etc/fdfs
 cp tracker.conf.sample tracker.conf
 vim  tracker.conf
-      base_path=fastdfs/tracker
+      base_path=/fastdfs/tracker
 mkdir -p /fastdfs/tracker
 可以关闭防火墙（22122）
 
@@ -37,6 +38,7 @@ mkdir -p /fastdfs/tracker
 A(存储器)
 cd /etc/fdfs
 cp storage.conf.sample storage.conf
+vim  storage.conf
     base_path=/fastdfs/storage
     store_path0=/fastdfs/storage
     tracker_server=跟踪器IP:端口 123.206.32.230:22122
