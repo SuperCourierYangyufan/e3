@@ -50,7 +50,7 @@ vim  storage.conf
   关闭 /etc/init.d/fdfs_storaged stop
 
  
-B(nginx)
+A(nginx)
  fastdfs-nginx-module解压进入其下src    /usr/local/fast
 vim config
     CORE_INCS="$CORE_INCS /usr/local/include/fastdfs /usr/local/include/fastcommon/" 改为
