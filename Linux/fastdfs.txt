@@ -23,7 +23,7 @@ vim /etc/init.d/fdfs_trackerd
        %s+/usr/local/bin+/usr/bin
       
 
-A(跟踪器)
+B(跟踪器)
 cd /etc/fdfs
 cp tracker.conf.sample tracker.conf
 vim  tracker.conf
@@ -34,7 +34,7 @@ mkdir -p /fastdfs/tracker
 启动/etc/init.d/fdfs_trackerd start
 关闭 /etc/init.d/fdfs_trackerd stop
 
-B(存储器)
+A(存储器)
 cd /etc/fdfs
 cp storage.conf.sample storage.conf
     base_path=/fastdfs/storage
