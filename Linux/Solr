@@ -20,7 +20,7 @@
 13.复制文件分词器所需文件 cp ext_stopword.dic IKAnalyzer.cfg.xml mydict.dic /usr/local/apache-tomcat-7.0.57/webapps/solr/WEB-INF/classes
 14. cd /usr/local/solrhome/collection1/conf/   进入1号空间配置分词器
 15.vi schema.xml  配置文件 
-    =》在最后 加入
+    =》在在</schema> 前加入配置：
         <fieldType name="text_ik" class="solr.TextField">
             <analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"/>
         </fieldType>
