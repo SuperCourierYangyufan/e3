@@ -1,12 +1,12 @@
  yum install make cmake gcc gcc-c++
 
 
-
+mkdir /usr/local/lib
 解压并进入libfastcommon   /usr/local/fast
  ./make.sh
  ./make.sh install
 
-mkdir /usr/local/lib
+
 ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so
 ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
 ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
